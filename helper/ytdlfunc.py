@@ -26,6 +26,7 @@ def extractYt(yturl):
     with ydl:
         qualityList = []
         r = ydl.extract_info(yturl, download=False)
+        # print(r['formats'])
         for format in r['formats']:
             qualityList.append(
                 {"format": format['format'], "filesize": format['filesize'], "format_id": format['format_id'],
