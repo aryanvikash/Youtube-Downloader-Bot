@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from pyrogram import Client, Filters, InlineKeyboardMarkup
+from pyrogram import Client, Filters, InlineKeyboardMarkup, InlineKeyboardButton
 from bot import user_time
 from config import youtube_next_fetch
 from helper.ytdlfunc import extractYt, create_buttons
@@ -30,16 +30,17 @@ async def ytdl(_, message):
     except Exception:
         await message.reply_text("`Failed To Fetch Youtube Data... 😔 \nPossible Youtube Blocked server ip \n#error`")
         return
-    buttons = InlineKeyboardMarkup(create_buttons(formats))
+    buttons = InlineKeyboardMarkup(list(create_buttons(formats)))
     sentm = await message.reply_text("Processing Youtube Url 🔎 🔎 🔎")
     try:
         # Todo add webp image support in thumbnail by default not supported by pyrogram
-        # TODO fix some 10 sec video for fetching details idk why but its not working
         # https://www.youtube.com/watch?v=lTTajzrSkCw
         await message.reply_photo(thumbnail_url, caption=title, reply_markup=buttons)
         await sentm.delete()
     except Exception as e:
-        await message.reply_text(text = title, reply_markup=buttons)
-        print(e)
-        await sentm.edit(
-            f"<code>Error Occurs Due To Youtube-dl not able To Fetch </code>{title} <code>Details</code>  #Error")
+        try:
+            await message.reply_text(title, reply_markup = buttons)
+        except Exception as e:
+            await sentm.edit(
+            f"<code>{e}</code> #Error")
+

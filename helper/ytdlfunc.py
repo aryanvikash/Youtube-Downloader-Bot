@@ -6,14 +6,13 @@ import asyncio
 
 
 def buttonmap(item):
-    quality = item['format'].split("-")[-1]
+    quality = item['format']
     if "audio" in quality:
         return [InlineKeyboardButton(f"{quality} 🎵 {humanbytes(item['filesize'])}",
                                      callback_data=f"ytdata||audio||{item['format_id']}||{item['yturl']}")]
     else:
         return [InlineKeyboardButton(f"{quality} 📹 {humanbytes(item['filesize'])}",
                                      callback_data=f"ytdata||video||{item['format_id']}||{item['yturl']}")]
-
 
 # Return a array of Buttons
 def create_buttons(quailitylist):
@@ -26,9 +25,10 @@ def extractYt(yturl):
     with ydl:
         qualityList = []
         r = ydl.extract_info(yturl, download=False)
-        # print(r['formats'])
         for format in r['formats']:
-            qualityList.append(
+            # Filter dash video(without audio)
+            if not "dash" in str(format['format']).lower():
+                qualityList.append(
                 {"format": format['format'], "filesize": format['filesize'], "format_id": format['format_id'],
                  "yturl": yturl})
 

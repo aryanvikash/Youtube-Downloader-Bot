@@ -38,7 +38,6 @@ async def catch_youtube_fmtid(c, m):
 
 @Client.on_callback_query()
 async def catch_youtube_dldata(c, q):
-    filename = None
     cb_data = q.data.strip()
     # Callback Data Check
     yturl = cb_data.split("||")[-1]
