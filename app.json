@@ -6,8 +6,8 @@
     "Youtube","YoutubeDownloader"
   ],
   "repository": "https://github.com/aryanvikash/Youtube-Downloader-Bot",
-  "success_url": "https://t.me/youtubdlbot",
-  "website": "https://github.com/aryanvikash/Youtube-Downloader-Bot",
+  "success_url": "https://t.me/networkingmindntm",
+  "website": "https://github.com/abdul972334/Youtube-Downloader-Bot",
   "env": {
         "API_ID": {"description": "Get this value from https://my.telegram.org", "required": true},
         "API_HASH": {"description": "Get this value from https://my.telegram.org" , "required": true},
