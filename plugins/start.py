@@ -1,9 +1,4 @@
-from pyrogram import (
-        Client,
-        filters as Filters,
-        StopPropagation )
-
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram import Client, Filters, StopPropagation, InlineKeyboardButton, InlineKeyboardMarkup
 
 
 @Client.on_message(Filters.command(["start"]), group=-2)
