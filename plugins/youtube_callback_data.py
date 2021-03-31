@@ -11,7 +11,9 @@ from pyrogram import (Client,
 
 from helper.ffmfunc import duration
 from helper.ytdlfunc import downloadvideocli, downloadaudiocli
-
+from PIL import Image
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
 
 @Client.on_callback_query()
 async def catch_youtube_fmtid(c, m):
@@ -39,9 +41,29 @@ async def catch_youtube_fmtid(c, m):
 @Client.on_callback_query()
 async def catch_youtube_dldata(c, q):
     cb_data = q.data.strip()
+    #print(q.message.chat.id)
     # Callback Data Check
     yturl = cb_data.split("||")[-1]
     format_id = cb_data.split("||")[-2]
+    thumb_image_path = "/app/downloads" + \
+        "/" + str(q.message.chat.id) + ".jpg"
+    print(thumb_image_path)
+    if os.path.exists(thumb_image_path):
+        width = 0
+        height = 0
+        metadata = extractMetadata(createParser(thumb_image_path))
+        #print(metadata)
+        if metadata.has("width"):
+            width = metadata.get("width")
+        if metadata.has("height"):
+            height = metadata.get("height")
+        img = Image.open(thumb_image_path)
+        if cb_data.startswith(("audio", "docaudio", "docvideo")):
+            img.resize((320, height))
+        else:
+            img.resize((90, height))
+        img.save(thumb_image_path, "JPEG")
+     #   print(thumb_image_path)
     if not cb_data.startswith(("video", "audio", "docaudio", "docvideo")):
         print("no data found")
         raise ContinuePropagation
@@ -83,6 +105,7 @@ async def catch_youtube_dldata(c, q):
         filename = await downloadaudiocli(audio_command)
         med = InputMediaAudio(
             media=filename,
+            thumb=thumb_image_path,
             caption=os.path.basename(filename),
             title=os.path.basename(filename)
         )
@@ -93,6 +116,9 @@ async def catch_youtube_dldata(c, q):
         med = InputMediaVideo(
             media=filename,
             duration=dur,
+            width=width,
+            height=height,
+            thumb=thumb_image_path,
             caption=os.path.basename(filename),
             supports_streaming=True
         )
@@ -101,6 +127,7 @@ async def catch_youtube_dldata(c, q):
         filename = await downloadaudiocli(audio_command)
         med = InputMediaDocument(
             media=filename,
+            thumb=thumb_image_path,
             caption=os.path.basename(filename),
         )
 
@@ -109,6 +136,7 @@ async def catch_youtube_dldata(c, q):
         dur = round(duration(filename))
         med = InputMediaDocument(
             media=filename,
+            thumb=thumb_image_path,
             caption=os.path.basename(filename),
         )
     if med:
@@ -131,5 +159,6 @@ async def send_file(c, q, med, filename):
     finally:
         try:
             os.remove(filename)
+            os.remove(thumb_image_path)
         except:
             pass
