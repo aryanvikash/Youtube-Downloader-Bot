@@ -2,13 +2,9 @@ import asyncio
 import os
 
 from pyrogram import (Client,
-                      InlineKeyboardButton,
-                      InlineKeyboardMarkup,
-                      ContinuePropagation,
-                      InputMediaDocument,
-                      InputMediaVideo,
-                      InputMediaAudio)
+                      ContinuePropagation)
 
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup,InputMediaDocument,InputMediaVideo,InputMediaAudio
 from helper.ffmfunc import duration
 from helper.ytdlfunc import downloadvideocli, downloadaudiocli
 from PIL import Image
@@ -94,7 +90,7 @@ async def catch_youtube_dldata(c, q):
         "youtube-dl",
         "-c",
         "--embed-subs",
-        "-f", f"{format_id}+bestaudio",
+        "-f", f"{format_id}[ext=mp4]+bestaudio[ext=m4a]",
         "-o", filepath,
         "--hls-prefer-ffmpeg", yturl]
 
