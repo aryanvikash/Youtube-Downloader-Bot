@@ -4,8 +4,8 @@
 #
 
 <p align="left">
-<a href="https://github.com/OO7ROBOT/YouTubeDownloaderBot/stargazers"><img alt="github" src="https://img.shields.io/github/stars/OO7ROBOT/YouTubeDownloaderBot?style=flat-square&color=yellow"/></a>
-<a href="https://github.com/OO7ROBOT/YouTubeDownloaderBot/fork"><img alt="github" src="https://img.shields.io/github/forks/OO7ROBOT/YouTubeDownloaderBot?style=flat-square&color=orange"/></a>     
+<a href="https://github.com/royfds/Youtube-Downloader-Bot/stargazers"><img alt="github" src="https://img.shields.io/github/stars/OO7ROBOT/YouTubeDownloaderBot?style=flat-square&color=yellow"/></a>
+<a href="https://github.com/royfds/Youtube-Downloader-Bot/fork"><img alt="github" src="https://img.shields.io/github/forks/OO7ROBOT/YouTubeDownloaderBot?style=flat-square&color=orange"/></a>     
   <a href="https://github.com/OO7ROBot/YouTubeDownloaderBot/stargazers">
     <img src="https://img.shields.io/github/stars/OO7ROBot/YouTubeDownloaderBot?style=social">
   </a>
@@ -49,7 +49,7 @@
   
 Press the below button to  deploy on Heroku <br>
   
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/OO7ROBOT/YoutubeDownloaderBot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/royfds/Youtube-Downloader-Bot)
 
 
 </details>
@@ -61,12 +61,12 @@ Press the below button to  deploy on Heroku <br>
 
 * Join MyTestBotZ Channel
 
-<a href="https://telegram.me/MyTestBotZ"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Channel-blue.svg?logo=telegram"></a>
+<a href="https://telegram.me/Moviezbarn"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Channel-blue.svg?logo=telegram"></a>
 
 ### Follow on:
 
 <p align="left">
-<a href="https://github.com/OO7ROBot"><img src="https://img.shields.io/badge/GitHub-Follow%20on%20GitHub-inactive.svg?logo=github"></a>
+<a href="https://github.com/Royfds"><img src="https://img.shields.io/badge/GitHub-Follow%20on%20GitHub-inactive.svg?logo=github"></a>
 </p>
 
 ## Credit & Thanks ❤️
