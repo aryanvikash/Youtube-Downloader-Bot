@@ -1,0 +1,7 @@
+
+TgCrypto
+https://raw.githubusercontent.com/HasibulKabir/pyrogramarchive/master/pyrogramasyncv0.18.0.zip
+git+https://github.com/OO7ROBot/youtube_dl
+wget
+pillow
+hachoir
